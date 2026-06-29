@@ -44,7 +44,10 @@ font-weight:bold;
 
 <input type="text" id="country" placeholder="Country"><br>
 
-<textarea id="bio" placeholder="Tell people about yourself"></textarea><br><button onclick="saveProfile()">Save Profile</button>
+<textarea id="bio" placeholder="Tell people about yourself"></textarea><br> 
+
+<button onclick="alert('Button works'); saveProfile()">Save Profile</button>
+
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
