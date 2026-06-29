@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Profile</title>
+
+<style>
+body{
+font-family:Arial;
+background:#ff4d6d;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+input, textarea{
+width:90%;
+max-width:320px;
+padding:12px;
+margin:10px;
+border:none;
+border-radius:10px;
+}
+
+button{
+padding:12px 30px;
+background:white;
+color:#ff4d6d;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>❤️ Complete Your Profile</h1>
+
+<input type="text" id="name" placeholder="Full Name"><br>
+
+<input type="number" id="age" placeholder="Age"><br>
+
+<input type="text" id="country" placeholder="Country"><br>
+
+<textarea id="bio" placeholder="Tell people about yourself"></textarea><br><button onclick="saveProfile()">Save Profile</button>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabase = createClient(
+"https://hmoihzpztvqhokezgkhq.supabase.co",
+"sb_publishable_b-0YQZor3CfXm7YzsovJFg_izd4BheD"
+);
+
+window.saveProfile = async function () {
+
+const {
+  data: { user }
+} = await supabase.auth.getUser();
+
+const profile = {
+  name: document.getElementById("name").value,
+  age: parseInt(document.getElementById("age").value),
+  country: document.getElementById("country").value,
+  bio: document.getElementById("bio").value
+};
+
+const { error } = await supabase
+.from("profiles")
+.insert([{
+  id: user.id,
+  full_name: profile.name,
+  age: profile.age,
+  country: profile.country,
+  bio: profile.bio
+}]);
+
+if (error) {
+  alert(error.message);
+  return;
+}
+
+alert("Profile Saved!");
+window.location = "home.html";
+
+}
+</script>
+</body>
+</html>

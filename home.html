@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Single - Home</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#ff4d6d;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.card{
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+max-width:350px;
+margin:auto;
+}
+
+button{
+margin:10px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.like{
+background:#28a745;
+color:white;
+}
+
+.skip{
+background:#dc3545;
+color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>❤️ Welcome to Single</h1>
+
+<div class="card">
+<h2>Sarah, 24</h2>
+<p>📍 Brazil</p>
+<p>I love traveling, music and meeting new people.</p>
+
+<button class="like" onclick="alert('❤️ You liked Sarah!')">Like</button>
+
+<button class="skip" onclick="alert('Skipped')">Skip</button>
+</div>
+
+<br>
+
+<button onclick="logout()">Logout</button>
+
+<script>
+function logout(){
+localStorage.clear();
+window.location="index.html";
+}
+</script>
+
+</body>
+</html>
